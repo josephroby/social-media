@@ -4,15 +4,15 @@ import "../styles/LoginPage.css";
 
 export default function Login() {
   const [formData, setFormData] = React.useState({ email: "", password: "" })
-  const [item, setItems] = React.useState([])
+  const [users, setUsers] = React.useState([])
   const [formErrors, setFormErrors] = React.useState({});
-  const history = useNavigate();
+  const navigate = useNavigate();
 
 
   React.useEffect(function () {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then((response) => response.json())
-      .then(data => setItems(data))
+      .then(data => setUsers(data))
   }, [])
 
 
@@ -36,21 +36,21 @@ export default function Login() {
 
 
 
-    item.map((items) => {
-      var paswd = items.username;
+    users.map((user) => {
+      var paswd = user.username;
       var num = 123;
       paswd += num;
-      if (items.email !== userid && paswd !== passid) {
+      if (user.email !== userid && paswd !== passid) {
         errors.username = "Invalid username or password";
       }
-      else if (items.email === userid && paswd !== passid) {
+      else if (user.email === userid && paswd !== passid) {
         errors.username = "Invalid username or passsword";
       }
-      else if (items.email !== userid && paswd === passid) {
+      else if (user.email !== userid && paswd === passid) {
         errors.username = "Invalid username or passsword";
       }
       else {
-        history("postDetails");
+        navigate("postDetails");
       }
     });
     return errors;
@@ -60,7 +60,6 @@ export default function Login() {
       <h1>META</h1>
 
       <form onSubmit={handleSubmit} classname="form-input">
-        <div></div>
         <p>{formErrors.username}</p>
         <label>
           Username:
@@ -70,12 +69,12 @@ export default function Login() {
             className='user-input'
             type="email"
             name="email"
-            placeholder="Your email id"
+            placeholder="Enter your email-id"
             onChange={handleChange}
             value={formData.email}
           />
         </label>
-        <br></br>
+       <br />
         <p>{formErrors.password}</p>
         <label>
           Password:
@@ -89,7 +88,7 @@ export default function Login() {
             value={formData.password}
           />
         </label>
-        <br></br>
+        <br/>
         <button type="submit" className="login-button">
           Log In
         </button>
