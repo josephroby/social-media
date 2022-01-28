@@ -13,6 +13,10 @@
   align-items: center; 
 }
 
+.container fieldset{
+  border: 0;
+}
+
 .form-input{
   text-align: center;
 }
@@ -51,6 +55,6 @@
   align-items: center;
 }
 
-.login-button:active {
+.login-button:active{
   box-shadow: inset 5px 5px 10px 3px rgba(0, 0, 0, 0.7);
 }

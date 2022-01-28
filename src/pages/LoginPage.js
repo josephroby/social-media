@@ -33,20 +33,14 @@ export default function Login() {
     const errors = {};
     const userid = formData.email;
     const passid = formData.password;
-
-
-
-    users.map((user) => {
+    users.forEach((user) => {
       var paswd = user.username;
       var num = 123;
       paswd += num;
-      if (user.email !== userid && paswd !== passid) {
+      if (user.email !== userid) {
         errors.username = "Invalid username or password";
       }
       else if (user.email === userid && paswd !== passid) {
-        errors.username = "Invalid username or passsword";
-      }
-      else if (user.email !== userid && paswd === passid) {
         errors.username = "Invalid username or passsword";
       }
       else {
@@ -58,37 +52,35 @@ export default function Login() {
   return (
     <div className="container">
       <h1>META</h1>
-
       <form onSubmit={handleSubmit} classname="form-input">
-        <p>{formErrors.username}</p>
-        <label>
-          Username:
-
-          <input
-
-            className='user-input'
-            type="email"
-            name="email"
-            placeholder="Enter your email-id"
-            onChange={handleChange}
-            value={formData.email}
-          />
-        </label>
-       <br />
+        <fieldset>
+          <p>{formErrors.username}</p>
+          <label>
+            Username:
+            <input
+              className='user-input'
+              type="email"
+              name="email"
+              placeholder="Enter your email-id"
+              onChange={handleChange}
+              value={formData.email}
+            />
+          </label>
+        </fieldset> 
         <p>{formErrors.password}</p>
-        <label>
-          Password:
-
-          <input
-            className='user-password'
-            type="password"
-            name="password"
-            placeholder="Enter your password"
-            onChange={handleChange}
-            value={formData.password}
-          />
-        </label>
-        <br/>
+        <fieldset>
+          <label>
+            Password:
+            <input
+              className='user-password'
+              type="password"
+              name="password"
+              placeholder="Enter your password"
+              onChange={handleChange}
+              value={formData.password}
+            />
+          </label>
+        </fieldset>
         <button type="submit" className="login-button">
           Log In
         </button>
