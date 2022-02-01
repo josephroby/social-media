@@ -3,6 +3,7 @@ import LoginPage from "./pages/LoginPage";
 import PostPage from "./pages/PostPage";
 import PostDetails from "./pages/PostDetails";
 import ProfilePage from "./pages/ProfilePage";
+import React from "react";
 
 function App() {
   return (
