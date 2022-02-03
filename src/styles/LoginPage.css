@@ -75,3 +75,15 @@ body {
   font-weight: 900;
   color: #c0392b;
 }
+
+.header-content {
+  background-color: lightgreen;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+  color: #192a56;
+  text-transform: uppercase;
+}

@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Header from "../components/Header";
 import "../styles/LoginPage.css";
 
 export default function Login() {
@@ -49,7 +48,11 @@ export default function Login() {
   };
   return (
     <div className="container">
-      <Header />
+      <div className="header-content">
+        <h1>
+          <strong>META</strong>
+        </h1>
+      </div>
       <div className="main-content">
         <h1>LOGIN</h1>
         <form onSubmit={handleSubmit} classname="form-input">
