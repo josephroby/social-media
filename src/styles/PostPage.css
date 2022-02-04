@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+  background-color: #ffeaa7;
+}
+
+.content-wrapper {
+  margin-top: 20px;
+  display: grid;
+  grid-gap: 30px 60px;
+  grid-template: auto auto / repeat(3, 1fr);
+  padding: 30px;
+}
+
+.post-content {
+  background-color: #f7f1e3;
+  text-align: center;
+  padding: 25px 0;
+  font-size: 20px;
+  height: 80px;
+}
+
+.viewPosts-button {
+  background: none;
+  border: none;
+  padding: 20px;
+  font-size: 25px;
+  font-weight: 900;
+  color: #341f97;
+  cursor: pointer;
+}
