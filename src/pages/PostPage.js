@@ -1,11 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import "../styles/PostPage.css";
 
 function PostPage() {
   const [posts, setPosts] = React.useState([]);
-  const navigate = useNavigate();
 
   React.useEffect(function () {
     fetch("https://jsonplaceholder.typicode.com/posts")
@@ -13,17 +12,14 @@ function PostPage() {
       .then((data) => setPosts(data));
   }, []);
 
+  console.log(posts)
   const getUserDetails = JSON.parse(localStorage.getItem("userDetails"));
   const filteredPosts = posts.filter((post) => {
     if (post.userId === getUserDetails.id) {
       return post;
+
     }
   });
-
-  function viewPosts() {
-    navigate("/postDetails");
-  }
-
   return (
     <div>
       <Header />
@@ -31,24 +27,17 @@ function PostPage() {
         {filteredPosts.map((post) => (
           <div>
             <div className="post-content">
-              {" "}
-
-              <h3> {post.title}</h3>{" "}
+              <h3> {post.title}</h3>
             </div>
             <div className="post-content">
-              {" "}
               <em> created by:{getUserDetails.username}</em>
             </div>
-
             <div className="post-content">
-              {" "}
-              <p>{post.body}</p>{" "}
+              <p>{post.body}</p>
             </div>
             <div className="post-content">
-              {" "}
-              <button className="viewPosts-button" onClick={viewPosts}>
-                View Post
-              </button>{" "}
+            <Link to={`/postDetails/${post.id}`}className="viewpost-button">View Posts</Link>
+
             </div>
           </div>
         ))}

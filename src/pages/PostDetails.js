@@ -1,12 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import "../styles/PostDetails.css";
+import PostTitleAndDetails from "../components/PostTitleAndDetails";
+import Postcomments from "../components/PostComments";
+import Header from "../components/Header";
 
-function PostDetails() {
-  return (
-    <div>
-      <h1> This is PosetDetails Page</h1>
-      Back to <Link to="/"> Login Page</Link>
-    </div>
-  );
+function PostDetails( ){
+  const  {id}  = useParams();
+  return(
+  <div>
+  <Header />
+ <PostTitleAndDetails id={id}/>
+ <Postcomments id={id} />
+ </div>
+  )
 }
+
 export default PostDetails;

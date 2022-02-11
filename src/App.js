@@ -19,7 +19,7 @@ function App() {
           }
         />
         <Route
-          path="/postDetails"
+          path="/postDetails/:id"
           element={
             <ProtectedRoute>
               <PostDetails />
@@ -34,13 +34,20 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/commentDetails"
+          element={
+            <ProtectedRoute>
+              <commentDetails />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </div>
   );
 }
 
 export default App;
-
 function ProtectedRoute(props) {
 
   const isAuthenticated = JSON.parse(localStorage.getItem("userDetails"));
