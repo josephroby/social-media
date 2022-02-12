@@ -1,66 +1,49 @@
 import React from "react";
 import "../styles/PostDetails.css";
-function Postcomments(props) {
 
-    const [comments, setComments] = React.useState([]);
-    const [filteredComments, setfilteredComments] = React.useState([]);
-    const [userComments, setUserComments] = React.useState({ commentbox: "" })
-    const userDetails = JSON.parse(localStorage.getItem("userDetails"));
+function PostComments(props) {
+
+    const [comment, setComment] = React.useState([]);
+    const [userComment, setUserComment] = React.useState({ comments: "" });
 
     React.useEffect(function () {
-        fetch("https://jsonplaceholder.typicode.com/comments")
-            .then((response) => response.json())
-            .then((data) => setComments(data));
+        fetch(`https://jsonplaceholder.typicode.com/posts/${props.id}/comments`)
+            .then((res) => res.json())
+            .then((data) => setComment(data));
     }, []);
 
-    React.useEffect(() => {
-        setfilteredComments(comments.filter((item) => {
-            if (item.postId === parseInt(props.id)) {
-                console.log("inloop");
-                return item;
-            }
-        }))
-    }, [comments]);
+    const postComment = comment.map((comments) => <p>{comments.body}</p>);
 
-    function handleChange(event) {
-        setUserComments((prevFormData) => {
+    const handleChange = (event) => {
+        setUserComment((prevFormData) => {
             return {
                 ...prevFormData,
                 [event.target.name]: event.target.value,
-            };
-        });
-    }
+            }
+        })
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-    };
+    }
 
     return (
         <div>
-            <p> created by {userDetails.name} </p>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
-                    placeholder="Enter your comments"
+                    placeholder="enter your comments"
                     className="comment-box"
-                    name="commentbox"
-                    value={userComments.commentbox}
+                    name="comments"
+                    value={userComment.comments}
                     onChange={handleChange}
                 />
-                <button
-                    type="submit"
-                    className="post-button"
-                >
-                    Post
-                </button>
+                <button type="submit" classname="post-button">Post</button>
             </form>
-            <p>{userComments.commentbox}</p>
-            {filteredComments.map((item) =>
-            (
-                <div> {item.body} </div>
-            ))
-            }
+            <p>{userComment.comments}</p>
+            {postComment}
         </div>
-    )
-}
-export default Postcomments;
+    );
+};
+
+export default PostComments;

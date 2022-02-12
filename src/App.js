@@ -34,14 +34,6 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route
-          path="/commentDetails"
-          element={
-            <ProtectedRoute>
-              <commentDetails />
-            </ProtectedRoute>
-          }
-        />
       </Routes>
     </div>
   );
