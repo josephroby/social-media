@@ -21,10 +21,12 @@ function PostTitleAndDetails(props) {
 
     return (
         <div>
-            <button className='back-button' onClick={backToPostPage}>Back</button>
+            <button className="back-button" onClick={backToPostPage}>Back</button>
+            <div className="posts-details">
             <h1>{posts.title}</h1>
-            <p>{posts.body}</p>
-            <p>created by:{getUserDetails.name}</p>
+            <p className='posts-body'>{posts.body}</p>
+            <em className='posts-name'>created by:{getUserDetails.name}</em>
+            </div>
         </div>
     );
 }

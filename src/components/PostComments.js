@@ -13,7 +13,7 @@ function PostComments(props) {
             .then((data) => setComment(data));
     }, []);
 
-    const postComment = comment.map((comments) => <p> {comments.name}<br />{comments.body}</p>);
+    const postComment = comment.map((comments) => <p> {comments.getUserName}<br />{comments.body}</p>);
 
     const handleChange = (event) => {
         setUserComment(event.target.value);
@@ -21,11 +21,12 @@ function PostComments(props) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setComment((prevState) => [{ name: getUserDetails.username, body: userComment }, ...prevState])
+        setComment((prevState) => [{ getUserName: getUserDetails.username, body: userComment }, ...prevState])
     }
 
     return (
         <div>
+            <div className="comment-body">
             <form onSubmit={(event) => handleSubmit(event)}>
                 <input
                     type="text"
@@ -35,11 +36,14 @@ function PostComments(props) {
                     value={userComment}
                     onChange={handleChange}
                 />
-                 <div classname="post-button">
-                <button type="submit" >Post</button> 
+                  <div classname="post-button">
+                <button type="submit"  >
+                    Post 
+                </button> 
                 </div>
             </form>
             {postComment}
+            </div>
         </div>
     );
 };

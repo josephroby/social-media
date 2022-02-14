@@ -5,15 +5,15 @@ import PostTitleAndDetails from "../components/PostTitleAndDetails";
 import PostComments from "../components/PostComments";
 import Header from "../components/Header";
 
-function PostDetails( ){
-  const  {id}  = useParams();
-  return(
-  <div>
-  <Header />
- <PostTitleAndDetails id={id}/>
-    <h4>Comments</h4>
- <PostComments id={id} />
- </div>
+function PostDetails() {
+  const { id } = useParams();
+  return (
+    <div>
+      <Header />
+      <PostTitleAndDetails id={id} />
+      <h3>Comments</h3>
+      <PostComments id={id} />
+    </div>
   )
 }
 
