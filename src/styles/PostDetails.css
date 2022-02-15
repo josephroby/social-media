@@ -1,0 +1,67 @@
+body {
+    margin: 1.5;
+    background-color: #ffeaa7;
+  }
+  
+.back-button{
+    background: none;
+    border: none;
+    padding: 20px;
+    font-size: 23px;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bolder;
+    color: #c0392b;
+    cursor: pointer;
+}
+
+.comment-box {
+    width: 30%;
+    height: 70px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px black;
+    border-radius: 4px;
+    background-color:white;
+    resize: none; 
+} 
+
+.submit-button {
+    border: none;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 50px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.submit-button:active {
+    box-shadow: inset 5px 5px 10px 3px rgba(0, 0, 0, 0.7);
+} 
+
+
+.posts-details{
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+}
+
+.posts-body{
+    font-size: 25px;
+}
+
+.posts-name{
+    font-size: 20px;
+}
+
+h3{
+    padding:25px;
+}
+
+.comment-body{
+    padding: 25px;
+}
+
