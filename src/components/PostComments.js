@@ -35,12 +35,11 @@ function PostComments(props) {
                     name="comments"
                     value={userComment}
                     onChange={handleChange}
+                    required
                 />
-                  <div classname="post-button">
-                <button type="submit"  >
-                    Post 
-                </button> 
-                </div>
+                <button type="submit" className="submit-button" >
+                    Post
+                </button>             
             </form>
             {postComment}
             </div>
