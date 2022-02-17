@@ -1,18 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/LoginPage.css";
+import useFetch from "../hooks/useFetch";
 
 export default function Login() {
   const [formData, setFormData] = React.useState({ email: "", password: "" });
-  const [users, setUsers] = React.useState([]);
   const [formErrors, setFormErrors] = React.useState({});
   const navigate = useNavigate();
-
-  React.useEffect(function () {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => response.json())
-      .then((data) => setUsers(data));
-  }, []);
+  const [users] = useFetch("https://jsonplaceholder.typicode.com/users");
 
   function handleChange(event) {
     setFormData((prevFormData) => {
@@ -22,6 +17,7 @@ export default function Login() {
       };
     });
   }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     setFormErrors(validate(formData));
