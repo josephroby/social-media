@@ -27,6 +27,7 @@ function PostComments(props) {
       ...prevState,
     ]);
   };
+  console.log(comment);
 
   return (
     <div>
