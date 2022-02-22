@@ -1,13 +1,18 @@
 import React from "react";
 import { getLoggedInUser } from "../functions/getLoggedInUser";
-import useFetch from "../hooks/useFetch";
 import "../styles/PostDetails.css";
 
 function PostComments(props) {
   const [userComment, setUserComment] = React.useState("");
   const getUserDetails = getLoggedInUser();
-  const [comment, setComment] = useFetch(
-    `https://jsonplaceholder.typicode.com/posts/${props.id}/comments`);
+  const [comment, setComment] = React.useState([]);
+
+  React.useEffect(function () {
+    fetch(`https://jsonplaceholder.typicode.com/posts/${props.id}/comments`)
+      .then((res) => res.json())
+      .then((data) => setComment(data));
+  }, []);
+
   const postComment = comment.map((comments) => (
     <p>
       {comments.getUserName}
