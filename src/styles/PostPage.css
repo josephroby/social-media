@@ -1,5 +1,4 @@
 body {
-  margin: 0.5;
   background-color: #ffeaa7;
 }
 
@@ -17,6 +16,7 @@ body {
   padding: 25px 0;
   font-size: 20px;
   height: 80px;
+  width: 360px;
 }
 
 .viewpost-button {
@@ -29,4 +29,24 @@ body {
   cursor: pointer;
 }
 
+@media (max-width: 500px) {
+  body {
+    background-color: #ffeaa7;
+  }
 
+  .content-wrapper {
+    margin-top: 10px;
+    display: grid;
+    grid-gap: 10px 20px;
+    grid-template: auto auto / repeat(3, 1fr);
+    padding: 2px;
+  }
+  .post-content {
+    background-color: #f7f1e3;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 15px;
+    height: 80px;
+    width: 270px;
+  }
+}

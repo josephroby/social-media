@@ -1,25 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
+import { getLoggedInUser } from "../functions/getLoggedInUser";
+import useFetch from "../hooks/useFetch";
 import "../styles/PostPage.css";
 
 function PostPage() {
-  const [posts, setPosts] = React.useState([]);
-
-  React.useEffect(function () {
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((response) => response.json())
-      .then((data) => setPosts(data));
-  }, []);
-
-  console.log(posts)
-  const getUserDetails = JSON.parse(localStorage.getItem("userDetails"));
+  const [posts] = useFetch("https://jsonplaceholder.typicode.com/posts");
+  const getUserDetails = getLoggedInUser();
   const filteredPosts = posts.filter((post) => {
     if (post.userId === getUserDetails.id) {
       return post;
-
     }
   });
+
   return (
     <div>
       <Header />
@@ -36,8 +30,9 @@ function PostPage() {
               <p>{post.body}</p>
             </div>
             <div className="post-content">
-            <Link to={`/postDetails/${post.id}`}className="viewpost-button">View Posts</Link>
-
+              <Link to={`/postDetails/${post.id}`} className="viewpost-button">
+                View Posts
+              </Link>
             </div>
           </div>
         ))}

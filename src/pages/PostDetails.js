@@ -14,7 +14,7 @@ function PostDetails() {
       <h3>Comments</h3>
       <PostComments id={id} />
     </div>
-  )
+  );
 }
 
 export default PostDetails;

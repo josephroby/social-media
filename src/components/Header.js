@@ -2,16 +2,13 @@ import React from "react";
 import "../styles/Header.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { getNameInitials } from "../functions/getNameInitials";
+import { getUserName } from "../functions/getUserName";
 
 function Header() {
-  
-  const getUserDetails = JSON.parse(localStorage.getItem("userDetails"));
   const navigate = useNavigate();
-  const userName = getUserDetails.name;
-  const fullName = userName.split(" ");
-  const firstLetter = userName.charAt(0);
-  const lastLetter = fullName[fullName.length - 1].charAt(0);
-  const combine = firstLetter + lastLetter;
+  const loggedInUser = getUserName();
+  const initials = getNameInitials(loggedInUser);
 
   function handleLogOut() {
     navigate("/");
@@ -29,9 +26,9 @@ function Header() {
           >
             LOGOUT
           </button>
-          <small>{getUserDetails.name} </small>
+          <small>{loggedInUser} </small>
           <Link to="/profilePage" className="profile-page">
-            {combine}
+            {initials}
           </Link>
         </header>
       </div>
